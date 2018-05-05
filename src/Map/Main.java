@@ -17,6 +17,8 @@ public class Main extends Application {
         primaryStage.setTitle("Map View");
         primaryStage.setScene(new Scene(root, 600, 500));
         primaryStage.show();
+
+        FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt");
     }
 
 
