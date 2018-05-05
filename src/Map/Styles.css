@@ -1,0 +1,22 @@
+.root {
+    -fx-background-color: #424242;
+}
+
+.button {
+    -fx-text-fill: #fff;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#5c5c8a, #a3a3c2);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#666699, #b3b3cc);
+}
+
+.text-field {
+    -fx-background-color: #000c18;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
