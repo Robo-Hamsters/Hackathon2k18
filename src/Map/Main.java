@@ -14,6 +14,7 @@ public class Main extends Application {
         Parent root = loader.load();
         primaryStage.setTitle("Mapping Directions");
         primaryStage.setScene(new Scene(root));
+        root.getStylesheets().add(MapController.class.getResource("./Styles.css").toExternalForm());
         primaryStage.setMaximized(true);
         primaryStage.show();
         ((MapController)loader.getController()).loadMapView();
