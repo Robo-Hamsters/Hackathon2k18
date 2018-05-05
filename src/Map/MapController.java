@@ -37,7 +37,6 @@ public class MapController {
     public void loadMarkers(ActionEvent event) throws IOException {
 
         FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt", "./sample.txt");
-        System.out.println();
         for(Node node : nodeImport.getNodes())
         {
             webView.getEngine().executeScript("createMarker("+node.getLat()+","+node.getLon()+");");

@@ -29,6 +29,7 @@
     {
         var marker;
         marker = new google.maps.Marker({position:new google.maps.LatLng(lat, lng), map:map, title:""});
+        markers.push(marker);
     }
     function createPolyline(latFr,lonFr,latTo,lonTo)
     {
