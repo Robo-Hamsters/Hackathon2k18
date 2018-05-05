@@ -112,7 +112,7 @@ public class FileGeolocImport {
                     {
                         if(node.equals(origins.get(i)))
                         {
-                            nodes.get(nodes.indexOf(node)).getDistances().put(origins.get(i), distances.get(i));
+                            nodes.get(nodes.indexOf(node)).getDistances().put(destinations.get(i), distances.get(i));
                         }
                     }
                 }
