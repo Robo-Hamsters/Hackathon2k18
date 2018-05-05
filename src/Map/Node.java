@@ -6,7 +6,15 @@ public class Node {
 
    private double lat;
    private double lon;
+   private String name;
    private HashMap<Double,Node> distances = new HashMap<>();
+
+   public Node(String name, double lat, double lon)
+   {
+      this.name = name;
+      this.lat = lat;
+      this.lon = lon;
+   }
 
    public double getLat() {
       return lat;
