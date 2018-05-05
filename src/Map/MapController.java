@@ -8,6 +8,8 @@ import javafx.scene.web.WebView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapController {
 
@@ -16,8 +18,7 @@ public class MapController {
     @FXML
     Button btn_load;
 
-    public void loadMapView(ActionEvent event) throws IOException
-    {
+    public void loadMapView(ActionEvent event) throws IOException {
         WebEngine webEngine = webView.getEngine();
         String location =
                 new File(
@@ -25,5 +26,12 @@ public class MapController {
                 ).toURI().toURL().toExternalForm();
         System.out.println(location);
         webEngine.load(location);
+    }
+
+    public void draw(HashMap<Double,Double> map) {
+        for(Map.Entry<Double,Double> entry : map.entrySet())
+        {
+            initialize(entry.getKey(),entry.getValue());
+        }
     }
 }
