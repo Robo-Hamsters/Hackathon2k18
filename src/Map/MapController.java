@@ -30,8 +30,7 @@ public class MapController {
 
     public void draw(){
         WebEngine webEngine = webView.getEngine();
-        String location =
-                null;
+        String location = null;
         try {
             location = new File(System.getProperty("user.dir") + File.separator + "testing.html").toURI().toURL().toExternalForm();
             webEngine.load(location);

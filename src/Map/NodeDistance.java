@@ -37,7 +37,7 @@ public class NodeDistance {
     {
         URL urlObj = null;
         try {
-            urlObj = new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origins.getLat()+","+origins.getLon()+"&destinations="+destinations.getLat()+","+destinations.getLon()+"&key=AIzaSyCmA2N-U9gtKDHf-Zmh1ODAtKnyJ54iJBI");
+            urlObj = new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origins.getLat()+","+origins.getLon()+"&destinations="+destinations.getLat()+","+destinations.getLon()+"&key=AIzaSyC2lBSAcTeXhEeJw4k7l7dJr3R5o6QQVn8");
             URLConnection uc = urlObj.openConnection();
             try (BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()))) {
                 String inputLine = new String();
