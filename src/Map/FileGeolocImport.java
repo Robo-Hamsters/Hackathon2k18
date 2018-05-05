@@ -99,6 +99,9 @@ public class FileGeolocImport {
 
                 }
             }
+            Routing routing = new Routing();
+            routing.findTheRightPath(nodes);
+
             System.out.println();
 
         } catch (IOException e) {
