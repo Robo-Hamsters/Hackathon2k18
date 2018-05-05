@@ -16,7 +16,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setMaximized(true);
         primaryStage.show();
-        ((MapController)loader.getController()).draw();
+        ((MapController)loader.getController()).loadMapView();
     }
 
     public static void main(String[] args) {
