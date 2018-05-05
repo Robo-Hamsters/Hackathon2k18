@@ -1,23 +1,14 @@
 package Map;
 
-import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
+import java.util.Map;
 
 
 public class MapController {
@@ -43,9 +34,17 @@ public class MapController {
     public void loadMarkers(ActionEvent event) throws IOException {
 
         FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt", "./nodesToNodes.txt");
+        //nodeImport.saveToFile("./Filedata.txt");
         for(Node node : nodeImport.getNodes())
         {
             webView.getEngine().executeScript("createMarker("+node.getLat()+","+node.getLon()+");");
+        }
+        for(Node node : nodeImport.getNodes())
+        {
+            for(Map.Entry<Double, Node> distances : node.getDistances().entrySet())
+            {
+                webView.getEngine().executeScript("createPolyline("+node.getLat()+","+node.getLon()+","+distances.getValue().getLat()+","+distances.getValue().getLon()+");");
+            }
         }
     }
 }

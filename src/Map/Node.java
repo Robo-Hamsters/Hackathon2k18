@@ -8,6 +8,7 @@ public class Node {
    private double lon;
    private String name;
    private HashMap<Double,Node> distances = new HashMap<>();
+   private boolean visited;
 
    public Node(String name)
    {
@@ -50,5 +51,13 @@ public class Node {
    public String toString()
    {
       return name;
+   }
+
+   public boolean isVisited() {
+      return visited;
+   }
+
+   public void setVisited(boolean visited) {
+      this.visited = visited;
    }
 }
