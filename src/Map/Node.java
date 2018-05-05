@@ -14,7 +14,7 @@ public class Node {
    public double getLon() {
       return lon;
    }
-   public HashMap<Double, Node> getDestances() {
+   public HashMap<Double, Node> getDistances() {
       return distances;
    }
 
@@ -24,7 +24,7 @@ public class Node {
    public void setLon(double lon) {
       this.lon = lon;
    }
-   public void setDestances(HashMap<Double, Node> distances) {
+   public void setDistances(HashMap<Double, Node> distances) {
       this.distances = distances;
    }
 }
