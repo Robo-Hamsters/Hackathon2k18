@@ -19,7 +19,7 @@ public class FileGeolocImport {
             this.fileNodeReader = new BufferedReader(new FileReader(this.fileNodes));
             this.fileDistancesReader = new BufferedReader(new FileReader(this.fileDistances));
             importNodes();
-            importDistances();
+            importDistancesFormFile();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -38,7 +38,7 @@ public class FileGeolocImport {
             {
                 String[] arr = fileString.split("\t\t");
                 String[] geo = arr[1].split(" ");
-                nodes.add(new Node(arr[0], Double.parseDouble(geo[0]), Double.parseDouble(geo[1])));
+                nodes.add(new Node(Double.parseDouble(geo[0]), Double.parseDouble(geo[1])));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class FileGeolocImport {
     }
 
     public void importDistances()
-    {
+    {/*
         NodeDistance distanceAPI = new NodeDistance();
         String fileString = new String();
         Node toAdd = null;
@@ -79,32 +79,61 @@ public class FileGeolocImport {
                     distanceAPI.setOrigins(toAdd);
                     distanceAPI.setDestinations(otherNode);
                     distanceAPI.retriveDistance();
-
+                    //distanceAPI.retriveDistanceFILE("./Filedata.txt");
                     nodes.get(nodes.indexOf(toAdd)).getDistances().put(distanceAPI.getDistance(), otherNode);
-
                 }
             }
-            Routing routing = new Routing();
-            routing.findTheRightPath(nodes);
-
             System.out.println();
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+    }
+
+    public void importDistancesFormFile()
+    {
+        String fileString = new String();
+        List<Node> origins = new ArrayList<>();
+        List<Node> destinations = new ArrayList<>();
+        List<Double> distances = new ArrayList<>();
+
+        try {
+            while((fileString = this.fileDistancesReader.readLine()) != null)
+            {
+                String[] org1 = fileString.split("[<,>]");
+
+                origins.add(new Node(Double.parseDouble(org1[1]), Double.parseDouble(org1[2])));
+                destinations.add(new Node(Double.parseDouble(org1[4]), Double.parseDouble(org1[5])));
+                distances.add(Double.parseDouble(org1[7]));
+
+                for(Node node : nodes)
+                {
+                    for(int i=0; i<origins.size(); i++)
+                    {
+                        if(node.equals(origins.get(i)))
+                        {
+                            nodes.get(nodes.indexOf(node)).getDistances().put(destinations.get(i), distances.get(i));
+                        }
+                    }
+                }
+            }
+            System.out.println();
+        }catch(IOException e) {
             e.printStackTrace();
         }
     }
 
     public void saveToFile(String fileName)
-    {
+    {   /*
         try {
             FileWriter  outfile = new FileWriter(fileName);
             for(Node node : nodes)
             {
-                outfile.write("["+node.getName()+": \n\t"+node.getLat()+", "+node.getLon()+"\n{"+node.getDistances()+"]\n");
+                outfile.write(node.getName()+":"+node.getDistances()+"\n");
             }
             outfile.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
