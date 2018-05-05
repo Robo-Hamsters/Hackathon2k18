@@ -9,20 +9,21 @@
 <script type="text/javascript">
     var map;
     var markers = [];
+    var points= [];
     function initialise()
     {
         var options = { zoom:13, mapTypeId:google.maps.MapTypeId.ROADMAP, center:new google.maps.LatLng(41.0569097,23.4975426)};
         map = new google.maps.Map(document.getElementById('map_canvas'), options);
     }
-    function setMapOnAll(map)
+    function clearMap()
     {
         for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
+            markers[i].setMap(null);
         }
-    }
-    function clearMarkers()
-    {
-        setMapOnAll(null);
+        for (var i = 0; i < points.length; i++) {
+            points[i].setMap(null);
+        }
+        points = [];
         markers = [];
     }
     function createMarker(lat,lng)
@@ -41,6 +42,7 @@
             strokeWeight: 2,
             map:map,
         });
+        points.push(flightPath);
     }
 </script>
 </head>

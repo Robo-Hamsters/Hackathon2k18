@@ -54,7 +54,7 @@ public class MapController {
 
     public void clearMap(ActionEvent event)
     {
-        webView.getEngine().executeScript("clearMarkers()");
+        webView.getEngine().executeScript("clearMap()");
     }
 
     public void openFile(ActionEvent event)
