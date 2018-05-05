@@ -96,9 +96,11 @@ public class FileGeolocImport {
                     distanceAPI.retriveDistance();
 
                     nodes.get(nodes.indexOf(toAdd)).getDistances().put(distanceAPI.getDistance(), otherNode);
+
                 }
             }
             System.out.println();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -51,9 +51,9 @@ public class NodeDistance {
                 distance = Double.parseDouble(distanceStr)/1000;
             } catch (IOException e) {
             }
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
     }
 }

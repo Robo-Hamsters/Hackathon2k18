@@ -13,6 +13,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,24 +28,25 @@ public class MapController {
     private Button btn_load;
 
 
-    public void loadMapView(ActionEvent event) throws IOException {
+    public void draw(){
         WebEngine webEngine = webView.getEngine();
         String location =
-                new File(
-                        System.getProperty("user.dir") + File.separator + "testing.html"
-                ).toURI().toURL().toExternalForm();
-        System.out.println(location);
-        webEngine.load(location);
+                null;
+        try {
+            location = new File(System.getProperty("user.dir") + File.separator + "testing.html").toURI().toURL().toExternalForm();
+            webEngine.load(location);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void loadMapView(ActionEvent event) throws IOException {
 
         FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt", "./nodesToNodes.txt");
-
-        webEngine.reload();
-        if(webEngine.getLoadWorker().getState() == Worker.State.SUCCEEDED)
+        for(Node node : nodeImport.getNodes())
         {
-            for(Node node : nodeImport.getNodes())
-            {
-                webEngine.executeScript("createMarker("node.getLon()+","+node.getLat()")");
-            }
+            webView.getEngine().executeScript("createMarker("+node.getLat()+","+node.getLon()+");");
         }
     }
 }
