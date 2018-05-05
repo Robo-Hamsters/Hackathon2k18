@@ -11,17 +11,6 @@ public class FileGeolocImport {
     private BufferedReader fileDistancesReader;
     private List<Node> nodes;
 
-    public FileGeolocImport(String fileNodes)
-    {
-        this.fileNodes = fileNodes;
-        try {
-            this.fileNodeReader = new BufferedReader(new FileReader(this.fileNodes));
-            importNodes();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     public FileGeolocImport(String fileNodes, String fileDistances)
     {
         this.fileNodes = fileNodes;
@@ -38,10 +27,6 @@ public class FileGeolocImport {
 
     public List<Node> getNodes() {
         return nodes;
-    }
-
-    public void setNodes(List<Node> nodes) {
-        this.nodes = nodes;
     }
 
     public void importNodes()
@@ -104,6 +89,20 @@ public class FileGeolocImport {
 
             System.out.println();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveToFile(String fileName)
+    {
+        try {
+            FileWriter  outfile = new FileWriter(fileName);
+            for(Node node : nodes)
+            {
+                outfile.write("["+node.getName()+": \n\t"+node.getLat()+", "+node.getLon()+"\n{"+node.getDistances()+"]\n");
+            }
+            outfile.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

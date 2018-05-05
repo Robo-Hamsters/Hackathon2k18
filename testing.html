@@ -8,13 +8,26 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2lBSAcTeXhEeJw4k7l7dJr3R5o6QQVn8&callback=initMap" type="text/javascript"></script>
 <script type="text/javascript">
     var gMap;
-    function initialise() {
-        var options = { zoom:12, mapTypeId:google.maps.MapTypeId.ROADMAP, center:new google.maps.LatLng(41.0897461,23.5551878)};
+    function initialise()
+    {
+        var options = { zoom:12, mapTypeId:google.maps.MapTypeId.ROADMAP, center:new google.maps.LatLng(41.0569097,23.4975426)};
         gMap = new google.maps.Map(document.getElementById('map_canvas'), options);
     }
-    function createMarker(lat,lng) {
+    function createMarker(lat,lng)
+    {
         var marker;
         marker = new google.maps.Marker({position:new google.maps.LatLng(lat, lng), map:gMap, title:""});
+    }
+    function createPolyline(latFr,lonFr,latTo,lonTo)
+    {
+        var flightPath = new google.maps.Polyline({
+            path: [ {lat: latFr, lng: lonFr},{lat: latTo, lng: lonTo}],
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+            map:gMap,
+        });
     }
 </script>
 </head>
