@@ -22,7 +22,7 @@ public class MapController {
     @FXML
     private Button openFileBtn;
 
-    public void draw(){
+    public void loadMapView(){
         WebEngine webEngine = webView.getEngine();
         String location = null;
         try {
@@ -34,7 +34,7 @@ public class MapController {
 
     }
 
-    public void loadMapView(ActionEvent event) throws IOException {
+    public void loadMarkers(ActionEvent event) throws IOException {
 
         FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt", "./sample.txt");
         System.out.println();
