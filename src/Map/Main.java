@@ -4,9 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -17,10 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Map View");
         primaryStage.setScene(new Scene(root, 600, 500));
         primaryStage.show();
-
-        FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt");
     }
-
 
     public static void main(String[] args) {
         launch(args);
