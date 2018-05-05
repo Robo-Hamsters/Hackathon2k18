@@ -7,16 +7,28 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqpGkdJObuQ-J_fQoqk68dJtZx_ONUOpg&callback=initMap" type="text/javascript"></script>
 <script type="text/javascript">
-    var gMap;
+    var map;
+    var markers = [];
     function initialise()
     {
         var options = { zoom:13, mapTypeId:google.maps.MapTypeId.ROADMAP, center:new google.maps.LatLng(41.0569097,23.4975426)};
-        gMap = new google.maps.Map(document.getElementById('map_canvas'), options);
+        map = new google.maps.Map(document.getElementById('map_canvas'), options);
+    }
+    function setMapOnAll(map)
+    {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    }
+    function clearMarkers()
+    {
+        setMapOnAll(null);
+        markers = [];
     }
     function createMarker(lat,lng)
     {
         var marker;
-        marker = new google.maps.Marker({position:new google.maps.LatLng(lat, lng), map:gMap, title:""});
+        marker = new google.maps.Marker({position:new google.maps.LatLng(lat, lng), map:map, title:""});
     }
     function createPolyline(latFr,lonFr,latTo,lonTo)
     {
@@ -26,7 +38,7 @@
             strokeColor: '#FF0000',
             strokeOpacity: 1.0,
             strokeWeight: 2,
-            map:gMap,
+            map:map,
         });
     }
 </script>

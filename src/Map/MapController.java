@@ -17,7 +17,10 @@ public class MapController {
     private WebView webView;
     @FXML
     private Button btn_load;
-
+    @FXML
+    private Button clearMapBtn;
+    @FXML
+    private Button openFileBtn;
 
     public void draw(){
         WebEngine webEngine = webView.getEngine();
@@ -48,5 +51,15 @@ public class MapController {
         }
         //Routing routing = new Routing(nodeImport.getNodes());
         //routing.antCollony(routing.getNodes().get(0));
+    }
+
+    public void clearMap(ActionEvent event)
+    {
+        webView.getEngine().executeScript("clearMarkers()");
+    }
+
+    public void openFile(ActionEvent event)
+    {
+
     }
 }
