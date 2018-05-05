@@ -6,19 +6,16 @@ public class Node {
 
    private double lat;
    private double lon;
-   private String name;
-   private HashMap<Double,Node> distances = new HashMap<>();
+   private HashMap<Node, Double> distances = new HashMap<>();
    private boolean visited;
 
-   public Node(String name)
+   public Node()
    {
-      this.name = name;
       this.lon =0;
       this.lat = 0;
    }
-   public Node(String name, double lat, double lon)
+   public Node(double lat, double lon)
    {
-      this.name = name;
       this.lat = lat;
       this.lon = lon;
    }
@@ -29,12 +26,8 @@ public class Node {
    public double getLon() {
       return lon;
    }
-   public HashMap<Double, Node> getDistances() {
+   public HashMap<Node, Double> getDistances() {
       return distances;
-   }
-   public String getName()
-   {
-      return name;
    }
 
    public void setLat(double lat) {
@@ -43,14 +36,20 @@ public class Node {
    public void setLon(double lon) {
       this.lon = lon;
    }
-   public void setDistances(HashMap<Double, Node> distances) {
+   public void setDistances(HashMap<Node, Double> distances) {
       this.distances = distances;
    }
 
    @Override
    public String toString()
    {
-      return name;
+      return lat+", "+lon;
+   }
+
+   @Override
+   public boolean equals(Object o)
+   {
+      return (lat == ((Node)o).lat && lon == ((Node)o).lon);
    }
 
    public boolean isVisited() {

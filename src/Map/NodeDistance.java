@@ -2,9 +2,7 @@ package Map;
 
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -36,7 +34,7 @@ public class NodeDistance {
     {
         URL urlObj = null;
         try {
-            urlObj = new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origins.getLat()+","+origins.getLon()+"&destinations="+destinations.getLat()+","+destinations.getLon()+"&key=AIzaSyC2lBSAcTeXhEeJw4k7l7dJr3R5o6QQVn8");
+            urlObj = new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origins.getLat()+","+origins.getLon()+"&destinations="+destinations.getLat()+","+destinations.getLon()+"&key=AIzaSyDqpGkdJObuQ-J_fQoqk68dJtZx_ONUOpg\n");
             URLConnection uc = urlObj.openConnection();
             try (BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()))) {
                 String inputLine = new String();

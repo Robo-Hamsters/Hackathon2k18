@@ -1,30 +1,10 @@
-[Serres: 
-	41.092083, 23.541016
-{{9.423=K. Mitrousi, 15.126=Provatas, 9.14=Skoutari}]
-[Provatas: 
-	41.068238, 23.390686
-{{5.144=A. Kamila, 14.183=Serres}]
-[A. Kamila: 
-	41.05832, 23.424134
-{{0.0=A. Kamila, 5.144=Provatas, 6.272=Koumaria}]
-[K. Kamila: 
-	41.020431, 23.483293
-{{7.275=K. Mitrousi, 3.251=Skoutari, 5.735=Koumaria}]
-[K. Mitrousi: 
-	41.05868, 23.457547
-{{5.511=Koumaria, 9.373=Serres, 7.04=K. Kamila}]
-[Koumaria: 
-	41.016434, 23.434656
-{{0.0=Koumaria, 5.511=K. Mitrousi, 2.466=Adelfiko, 5.833=K. Kamila}]
-[Skoutari: 
-	41.020032, 23.520701
-{{9.1=Serres, 3.218=K. Kamila, 4.488=Peponia}]
-[Adelfiko: 
-	41.014645, 23.457354
-{{6.821=Peponia, 2.427=Koumaria}]
-[Ag. Eleni: 
-	41.003545, 23.559196
-{{4.622=Skoutari, 4.784=Peponia}]
-[Peponia: 
-	40.988154, 23.516756
-{{4.019=Skoutari, 4.734=Ag. Eleni, 6.821=Adelfiko}]
+Serres:9.423=K. Mitrousi,15.126=Provatas,9.14=Skoutari
+Provatas:5.144=A. Kamila,14.183=Serres
+A. Kamila:0.0=A. Kamila,5.144=Provatas,6.272=Koumaria
+K. Kamila:7.275=K. Mitrousi,3.251=Skoutari,5.735=Koumaria
+K. Mitrousi:5.511=Koumaria,9.373=Serres,7.04=K. Kamila
+Koumaria:0.0=Koumaria,5.511=K. Mitrousi,2.466=Adelfiko,5.833=K. Kamila
+Skoutari:9.1=Serres,3.218=K. Kamila,4.488=Peponia
+Adelfiko:6.821=Peponia,2.427=Koumaria
+Ag. Eleni:4.622=Skoutari,4.784=Peponia
+Peponia:4.019=Skoutari,4.734=Ag. Eleni,6.821=Adelfiko

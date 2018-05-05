@@ -33,18 +33,20 @@ public class MapController {
 
     public void loadMapView(ActionEvent event) throws IOException {
 
-        FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt", "./nodesToNodes.txt");
-        //nodeImport.saveToFile("./Filedata.txt");
+        FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt", "./sample.txt");
+        System.out.println();
         for(Node node : nodeImport.getNodes())
         {
             webView.getEngine().executeScript("createMarker("+node.getLat()+","+node.getLon()+");");
         }
         for(Node node : nodeImport.getNodes())
         {
-            for(Map.Entry<Double, Node> distances : node.getDistances().entrySet())
+            for(Map.Entry<Node, Double> distances : node.getDistances().entrySet())
             {
-                webView.getEngine().executeScript("createPolyline("+node.getLat()+","+node.getLon()+","+distances.getValue().getLat()+","+distances.getValue().getLon()+");");
+                webView.getEngine().executeScript("createPolyline("+node.getLat()+","+node.getLon()+","+distances.getKey().getLat()+","+distances.getKey().getLon()+");");
             }
         }
+        //Routing routing = new Routing(nodeImport.getNodes());
+        //routing.antCollony(routing.getNodes().get(0));
     }
 }
