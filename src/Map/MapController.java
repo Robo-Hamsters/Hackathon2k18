@@ -34,7 +34,7 @@ public class MapController {
     public void loadMapView(ActionEvent event) throws IOException {
 
         FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt", "./nodesToNodes.txt");
-        nodeImport.saveToFile("./Filedata.txt");
+        //nodeImport.saveToFile("./Filedata.txt");
         for(Node node : nodeImport.getNodes())
         {
             webView.getEngine().executeScript("createMarker("+node.getLat()+","+node.getLon()+");");
