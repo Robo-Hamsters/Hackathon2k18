@@ -1,10 +1,10 @@
-Serres Provatas K.Mitrousi Skoutari
-Provatas Serres A.Kamila
-A.Kamila K.Mitrousi Provatas Koumaria  
-K. Kamila Skoutari Koumaria K. Mitrousi
-K. Mitrousi Serres A.Kamila K. Kamila Koumaria
-Koumaria A.Kamila K. Mitrousi Adelfiko K. Kamila
-Skoutari Serres K.Kamila Peponia Ag.Eleni	
-Adelfiko Koumaria Peponia	
-Ag. Eleni Peponia Skoutari	
-Peponia	Skoutari Ag.Eleni Adelfiko
+Serres:Provatas,K. Mitrousi,Skoutari
+Provatas:Serres,A. Kamila
+A. Kamila:K.Mitrousi,Provatas,Koumaria
+K. Kamila:Skoutari,Koumaria,K. Mitrousi
+K. Mitrousi:Serres,A.Kamila,K. Kamila,Koumaria
+Koumaria:A.Kamila,K. Mitrousi,Adelfiko,K. Kamila
+Skoutari:Serres,K. Kamila,Peponia, Ag. Eleni
+Adelfiko:Koumaria,Peponia
+Ag. Eleni:Peponia,Skoutari
+Peponia:Skoutari,Ag. Eleni,Adelfiko

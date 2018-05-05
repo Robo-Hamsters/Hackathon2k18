@@ -31,7 +31,7 @@ public class MapController {
     public void draw(HashMap<Double,Double> map) {
         for(Map.Entry<Double,Double> entry : map.entrySet())
         {
-            initialize(entry.getKey(),entry.getValue());
+            //initialize(entry.getKey(),entry.getValue());
         }
     }
 }
