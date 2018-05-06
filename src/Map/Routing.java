@@ -31,22 +31,31 @@ public class Routing {
     public void findTheRightPath() {
 
         finalNode = null;
+        routAlgorithmWeights(nodes.get(0));
+        //routAlgorithm(nodes.get(0),null,null);
+        System.out.println(calculateTotalDistance(visited));
+        System.out.println(visited.size());
+
 
         HashMap<List<Node>,Double> multy = new HashMap<>();
-
-        //random(graphMaker());
-        for(int i =0 ; i<15;i++){
-            routAlgorithmWeights(nodes.get(0), null, null)
+        for(int i =0 ; i<150;i++){
+            routAlgorithmWeights(nodes.get(0));
             multy.put(visited,calculateTotalDistance(visited));
             visited.clear();
         }
-        double min = 1000;
+        double min = 10000;
         for(Map.Entry<List<Node>,Double> entry : multy.entrySet()){
-            System.out.println();
+            if(entry.getValue()<min){
+                if(entry.getKey().size() == 10)
+                {
+                    min = entry.getValue();
+                    visited=entry.getKey();
+                }
+            }
         }
-        /*for (int i = 0; i < visited.size(); i++) {
+        for (int i = 0; i < visited.size(); i++) {
             System.out.println(visited.get(i).getName());
-        }*/
+        }
     }
 
 
@@ -99,8 +108,24 @@ public class Routing {
 
     }
 
-    public void routAlgorithmWeights(Node startingNode, Node previousNode, List<Node> previousNodeList) {
-        Node nextNode = null;
+    public void routAlgorithmWeights(Node startingNode) {
+        Node nextNode = null ;
+       /* List<Node> list = new ArrayList<>();
+        for (Map.Entry<Node, Double> entry : startingNode.getDistances().entrySet()) {
+
+            list.add(entry.getKey());
+        }
+
+        if(startingNode.isVisited()){
+            nextNode = getMaxConNode(list);
+        }else{
+            nextNode = getMinConNode(list);
+            startingNode.setVisited(true);
+        }
+
+
+        routAlgorithmWeights(nextNode);
+*/
 
         List<Node> list = new ArrayList<>();
         for (Map.Entry<Node, Double> entry : startingNode.getDistances().entrySet()) {
@@ -109,6 +134,7 @@ public class Routing {
         }
         if (getMinConNode(list).isVisited()) {
             nextNode = list.get(giveRandom(startingNode.getDistances().size()));
+
         } else {
             nextNode = getMinConNode(list);
         }
@@ -118,12 +144,14 @@ public class Routing {
             visited.add(startingNode);
             System.out.println("Finito");
         } else {
-            previousNode = startingNode;
-            previousNodeList = list;
-            visited.add(startingNode);
-            startingNode.setVisited(true);
-            routAlgorithmWeights(nextNode, previousNode, previousNodeList);
-
+            if(visited.contains(startingNode)){
+                startingNode.setVisited(true);
+                routAlgorithmWeights(nextNode);
+            }else{
+                visited.add(startingNode);
+                startingNode.setVisited(true);
+                routAlgorithmWeights(nextNode);
+            }
         }
     }
 
@@ -138,7 +166,7 @@ public class Routing {
                 break;
             }
         }
-        if (check && atLast.getName().equals("Adelfiko")) {
+        if (check && atLast.equals(new Node(41.014645, 23.457354))) {
             return true;
         } else {
             return false;
@@ -160,10 +188,27 @@ public class Routing {
 
                 min = node.getDistances().size();
                 nodeWithMinCon = node;
-            } else if (node.getDistances().size() == min) {
+            } /*else if (node.getDistances().size() == min) {
                 nodeWithMinCon = node;
 
-            }
+            }*/
+        }
+
+        return nodeWithMinCon;
+    }
+
+    private Node getMaxConNode(List<Node> map) {
+        int max = -9999;
+        Node nodeWithMinCon = null;
+        for (Node node : map) {
+            if (node.getDistances().size() > max) {
+
+                max = node.getDistances().size();
+                nodeWithMinCon = node;
+            } /*else if (node.getDistances().size() == min) {
+                nodeWithMinCon = node;
+
+            }*/
         }
 
         return nodeWithMinCon;
