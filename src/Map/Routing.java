@@ -15,6 +15,8 @@ public class Routing {
     private Map<Node, Node> prev = new HashMap<Node, Node>();
     private List<Node> visited = new ArrayList();
     private Node finalNode;
+    private List<Node> pathBack = new ArrayList<>();
+
 
     public List<Node> getRoute() {
         return this.visited;
@@ -31,11 +33,17 @@ public class Routing {
     public void findTheRightPath() {
 
         finalNode = null;
-        routAlgorithmWeights(nodes.get(0));
+        for(Node node : nodes){
+            if(node.equals(new Node(41.014645, 23.457354))){
+                finalNode = node;
+            }
+        }
+       // routAlgorithmWeights(nodes.get(0));
         //routAlgorithm(nodes.get(0),null,null);
-        System.out.println(calculateTotalDistance(visited));
-        System.out.println(visited.size());
-
+        //System.out.println(calculateTotalDistance(visited));
+        //System.out.println(visited.size());
+        calcBackwards(finalNode);
+/*
 
         HashMap<List<Node>,Double> multy = new HashMap<>();
         for(int i =0 ; i<150;i++){
@@ -52,7 +60,7 @@ public class Routing {
                     visited=entry.getKey();
                 }
             }
-        }
+        }*/
         for (int i = 0; i < visited.size(); i++) {
             System.out.println(visited.get(i).getName());
         }
@@ -127,7 +135,7 @@ public class Routing {
         routAlgorithmWeights(nextNode);
 */
 
-        List<Node> list = new ArrayList<>();
+        List<Node> list= new ArrayList<>();
         for (Map.Entry<Node, Double> entry : startingNode.getDistances().entrySet()) {
 
             list.add(entry.getKey());
@@ -229,7 +237,7 @@ public class Routing {
         return totDist;
     }
 
-    private Node getOtherThanVisited(Node unwanted, List<Node> nodes) {
+    /*private Node getOtherThanVisited(Node unwanted, List<Node> nodes) {
         for (Node node : nodes) {
             if (!unwanted.equals(node)) {
 
@@ -239,6 +247,33 @@ public class Routing {
 
         }
         return unwanted;
+    }*/
+
+    public void calcBackwards(Node endPoint){
+
+        List<Node> list = new ArrayList<>();
+
+        for (Map.Entry<Node, Double> entry : endPoint.getDistances().entrySet()) {
+
+            list.add(entry.getKey());
+        }
+
+        for(Node node : list){
+            for(Map.Entry<Node,Double> entry1 : node.getDistances().entrySet()){
+                for( Map.Entry<Node,Double> entry2: entry1.getKey().getDistances().entrySet()){
+                    for(Map.Entry<Node,Double> entry3 : entry2.getKey().getDistances().entrySet()){
+                        for(Map.Entry<Node,Double> entry4 : entry3.getKey().getDistances().entrySet()){
+                            for( Map.Entry<Node,Double> entry5: entry4.getKey().getDistances().entrySet()){
+                                for(Map.Entry<Node,Double> entry6 : entry5.getKey().getDistances().entrySet()){
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
 }
