@@ -10,9 +10,12 @@ import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Map;
 
@@ -119,4 +122,16 @@ public class MapController {
             filePath.setText(distancesFile.toString());
         }
     }
+
+    public void openAbout(ActionEvent event)
+    {
+        try {
+            File index = new File("About/About.html");
+            Desktop.getDesktop().open(index);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
