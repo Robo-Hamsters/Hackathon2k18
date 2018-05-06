@@ -48,7 +48,7 @@ public class FileGeolocImport {
     }
 
     public void importDistances()
-    {/*
+    {
         NodeDistance distanceAPI = new NodeDistance();
         String fileString = new String();
         Node toAdd = null;
@@ -81,14 +81,14 @@ public class FileGeolocImport {
                     distanceAPI.setOrigins(toAdd);
                     distanceAPI.setDestinations(otherNode);
                     distanceAPI.retriveDistance();
-                    nodes.get(nodes.indexOf(toAdd)).getDistances().put(distanceAPI.getDistance(), otherNode);
+                    nodes.get(nodes.indexOf(toAdd)).getDistances().put(otherNode, distanceAPI.getDistance());
                 }
             }
             System.out.println();
 
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     public void importDistancesFormFile()

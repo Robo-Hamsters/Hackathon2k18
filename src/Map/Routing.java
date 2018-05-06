@@ -8,16 +8,18 @@ public class Routing {
     public Routing() {
     }
 
+    double min =10000;
     private List<Node> nodes;
     private Map<Node, Boolean> vis = new HashMap<Node, Boolean>();
     int countOfVisited = 0;
     int countPrison = 0;
     private Map<Node, Node> prev = new HashMap<Node, Node>();
     private List<Node> visited = new ArrayList();
+    private List<Node> route = null;
     private Node finalNode;
 
     public List<Node> getRoute() {
-        return this.visited;
+        return this.route;
     }
 
     public void setNodes(List<Node> nodes) {
@@ -29,32 +31,25 @@ public class Routing {
     }
 
     public void findTheRightPath() {
-
         finalNode = null;
         routAlgorithmWeights(nodes.get(0));
-        //routAlgorithm(nodes.get(0),null,null);
         System.out.println(calculateTotalDistance(visited));
         System.out.println(visited.size());
-
-
-        HashMap<List<Node>,Double> multy = new HashMap<>();
         for(int i =0 ; i<150;i++){
             routAlgorithmWeights(nodes.get(0));
-            multy.put(visited,calculateTotalDistance(visited));
-            visited.clear();
-        }
-        double min = 10000;
-        for(Map.Entry<List<Node>,Double> entry : multy.entrySet()){
-            if(entry.getValue()<min){
-                if(entry.getKey().size() == 10)
+            if(calculateTotalDistance(visited) < min)
+            {
+                if(visited.size() == 10)
                 {
-                    min = entry.getValue();
-                    visited=entry.getKey();
+                    min = calculateTotalDistance(visited);
+                    route = new ArrayList<>();
+                    for(Node node: visited)
+                    {
+                        route.add(node);
+                    }
                 }
             }
-        }
-        for (int i = 0; i < visited.size(); i++) {
-            System.out.println(visited.get(i).getName());
+            visited.clear();
         }
     }
 
@@ -93,7 +88,6 @@ public class Routing {
 
         if (isFinished(startingNode)) {
             visited.add(startingNode);
-            System.out.println("Finito");
 
         } else {
             while (nextNode.getName().equals("Adelfiko")) {
@@ -134,15 +128,11 @@ public class Routing {
         }
         if (getMinConNode(list).isVisited()) {
             nextNode = list.get(giveRandom(startingNode.getDistances().size()));
-
         } else {
             nextNode = getMinConNode(list);
         }
-
-
         if (isFinished(startingNode)) {
             visited.add(startingNode);
-            System.out.println("Finito");
         } else {
             if(visited.contains(startingNode)){
                 startingNode.setVisited(true);
@@ -232,11 +222,9 @@ public class Routing {
     private Node getOtherThanVisited(Node unwanted, List<Node> nodes) {
         for (Node node : nodes) {
             if (!unwanted.equals(node)) {
-
             } else {
                 unwanted = node;
             }
-
         }
         return unwanted;
     }
