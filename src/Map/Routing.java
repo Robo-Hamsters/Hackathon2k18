@@ -14,6 +14,21 @@ public class Routing {
     private List<Node> visited = new ArrayList();
     private Node finalNode;
 
+    public Routing()
+    {
+
+    }
+
+    public List<Node> getRoute()
+    {
+        return visited;
+    }
+
+    public void setNodes(List<Node> nodes)
+    {
+        this.nodes = nodes;
+    }
+
     public Routing(List<Node> nodes) {
         this.nodes = nodes;
     }
@@ -21,17 +36,16 @@ public class Routing {
     public void findTheRightPath() {
 
         finalNode = null;
-
-
-        //random(graphMaker());
         routAlgorithm(nodes.get(0), null);
        for(int i = 0 ; i<visited.size();i++) {
            System.out.println(visited.get(i).getName());
        }
-        //arrayWithRouts();
-        //STP();
     }
 
+    public void exclusizeAlgorithm()
+    {
+
+    }
 
     public void routAlgorithm(Node startingNode, Node previousNode) {
         Node nextNode = null;
@@ -59,24 +73,21 @@ public class Routing {
         if(previousNode.equals(startingNode)){
             countPrison++;
         }
-        if (countPrison > 2) {
-            list.get(1).setVisited(false);
+        if (countPrison >= list.size()) {
+            list.get(giveRandom(startingNode.getDistances())).setVisited(false);
         }
         if (sum == list.size()) {
             nextNode = previousNode;
         }
 
-        if (countOfVisited == 10 && startingNode.getName().equals("Adelfiko")) {
+        if (countOfVisited >= nodes.size() && startingNode.getName().equals("Adelfiko")) {
             visited.add(startingNode);
             System.out.println("Finito");
         } else {
             list.clear();
             visited.add(startingNode);
             routAlgorithm(nextNode, previousNode);
-
         }
-
-
     }
 
 
