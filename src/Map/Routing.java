@@ -1,101 +1,110 @@
 package Map;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+
 
 public class Routing {
 
     private List<Node> nodes;
-    private ArrayList<Node> route = new ArrayList<>(10);
+    private Map<Node, Boolean> vis = new HashMap<Node, Boolean>();
+    int countOfVisited = 0;
+    int countPrison = 0;
+    private Map<Node, Node> prev = new HashMap<Node, Node>();
+    private List<Node> visited = new ArrayList();
+    private Node finalNode;
 
-    public List<Node> getNodes()
-    {
-        return nodes;
-    }
-
-    public Routing(List<Node> nodes)
-    {
+    public Routing(List<Node> nodes) {
         this.nodes = nodes;
     }
 
-    public void walkRoute()
-    {
-        System.out.println(route);
+    public void findTheRightPath() {
+
+        finalNode = null;
+
+
+        //random(graphMaker());
+        routAlgorithm(nodes.get(0), null);
+       for(int i = 0 ; i<visited.size();i++) {
+           System.out.println(visited.get(i).getName());
+       }
+        //arrayWithRouts();
+        //STP();
     }
 
-    public void antCollony(Node startingPoint)
-    {
-        if(startingPoint.isVisited())
-            walkRoute();
-        else
-        {
-            Random generator = new Random();
-            Object[] values = startingPoint.getDistances().values().toArray();
-            Node randomValue;
-            int tryies =-1;
-            do
-            {
-                tryies++;
-                randomValue = (Node)values[generator.nextInt(values.length)];
-                if(randomValue.getDistances().size() >= tryies)
-                    break;
-            }while(randomValue.isVisited());
-            Node node = nodes.get(nodes.indexOf(startingPoint));
-            route.add(randomValue);
-            node.setVisited(true);
-            antCollony(randomValue);
-        }
-    }
 
-    public void findTheRightPath(List<Node> nodes) {
-        /*
-        this.nodes = nodes;
+    public void routAlgorithm(Node startingNode, Node previousNode) {
+        Node nextNode = null;
+        int sum = 0;
+        List<Node> list = new ArrayList<>();
+        int indexToGet = giveRandom(startingNode.getDistances());
+        for (Map.Entry<Node, Double> entry : startingNode.getDistances().entrySet()) {
 
-        Node finalNode = null;
-
-        for (Node node : nodes) {
-            if (node.getName().equals("Adelfiko")) {
-                finalNode = node;
-            }
+            list.add(entry.getKey());
         }
 
-        test(nodes.get(0));
-        */
-    }
-
-    public void test(Node startingNode) {
-        /*
-        giveRandom(startingNode.getDistances());
-        int min = 10;
-        HashMap<Double, Node> map;
-        map = startingNode.getDistances();
-        Collection<Node> colNode = map.values();
-        for (Node current : colNode) {
-            if (current.getDistances().size() < min) {
-                if (!startingNode.isVisited()) {
-                    min = current.getDistances().size();
-                }
+        if (list.get(indexToGet).isVisited()) {
+            nextNode = startingNode;
+        } else {
+            countOfVisited++;
+            nextNode = list.get(indexToGet);
+            previousNode = startingNode;
+            startingNode.setVisited(true);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).isVisited()) {
+                sum++;
             }
         }
-        */
+        if(previousNode.equals(startingNode)){
+            countPrison++;
+        }
+        if (countPrison > 2) {
+            list.get(1).setVisited(false);
+        }
+        if (sum == list.size()) {
+            nextNode = previousNode;
+        }
+
+        if (countOfVisited == 10 && startingNode.getName().equals("Adelfiko")) {
+            visited.add(startingNode);
+            System.out.println("Finito");
+        } else {
+            list.clear();
+            visited.add(startingNode);
+            routAlgorithm(nextNode, previousNode);
+
+        }
+
+
     }
 
-    public void random(Node startingNode) {
-        /*
-        HashMap<Double, Node> map;
-        map = startingNode.getDistances();
-        Collection<Node> colNode = map.values();
-        for (Node current : colNode) {
 
-            giveRandom(current.getDistances());
+    public int giveRandom(HashMap<Node, Double> map) {
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = ThreadLocalRandom.current().nextInt(0, map.size());
+
+        return randomNum;
+    }
+
+
+
+
+   /* public HashMap<Node,List<Node>> graphMaker() {
+        HashMap<Node,List<Node>> graph = new HashMap<>();
+        List<Node> nodeToGo = new ArrayList<>();
+        for(Node node : nodes){
+            nodeToGo.clear();
+            for(Map.Entry<Double,Node> entry : node.getDistances().entrySet()){
+                nodeToGo.add(entry.getValue());
             }
-            */
-    }
-
-
-    public void giveRandom(HashMap<Double,Node> map){
-        int r = (int) (Math.random() * (map.size()));
-        System.out.println(r);
-    }
+            graph.put(node,nodeToGo);
+            nodeToGo.clear();
+        }
+        return graph;
+    }*/
 
 }
 
