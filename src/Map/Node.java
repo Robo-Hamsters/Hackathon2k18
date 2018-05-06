@@ -30,6 +30,13 @@ public class Node {
       this.lon = lon;
    }
 
+   public Node(String name, double lat, double lon)
+   {
+      this.name = name;
+      this.lat = lat;
+      this.lon = lon;
+   }
+
    public double getLat() {
       return lat;
    }
