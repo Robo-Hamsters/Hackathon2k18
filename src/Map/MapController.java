@@ -59,15 +59,17 @@ public class MapController {
                     webView.getEngine().executeScript("createPolyline("+node.getLat()+","+node.getLon()+","+distances.getKey().getLat()+","+distances.getKey().getLon()+");");
                 }
             }
+            Routing routing = new Routing(nodeImport.getNodes());
+            routing.findTheRightPath();
+            //routing.antCollony(routing.getNodes().get(0));
+
         }
-        Routing routing = new Routing(nodeImport.getNodes());
-        //routing.antCollony(routing.getNodes().get(0));
-        routing.findTheRightPath();
     }
 
     public void clearMap(ActionEvent event)
     {
         webView.getEngine().executeScript("clearMap()");
+
     }
 
     public void openFile(ActionEvent event)
