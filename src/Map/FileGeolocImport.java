@@ -38,7 +38,9 @@ public class FileGeolocImport {
             {
                 String[] arr = fileString.split("\t\t");
                 String[] geo = arr[1].split(" ");
-                nodes.add(new Node(Double.parseDouble(geo[0]), Double.parseDouble(geo[1])));
+                Node node = new Node(Double.parseDouble(geo[0]), Double.parseDouble(geo[1]));
+                node.setName(arr[0]);
+                nodes.add(node);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -112,7 +114,13 @@ public class FileGeolocImport {
                     {
                         if(node.equals(origins.get(i)))
                         {
-                            nodes.get(nodes.indexOf(node)).getDistances().put(destinations.get(i), distances.get(i));
+                            Node nodeToDefine = destinations.get(i);
+                            for(Node nodeForLoop : nodes){
+                                if(nodeToDefine.equals(nodeForLoop)){
+                                    nodes.get(nodes.indexOf(node)).getDistances().put(nodes.get(nodes.indexOf(nodeToDefine)), distances.get(i));
+                                }
+                            }
+
                         }
                     }
                 }

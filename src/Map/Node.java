@@ -9,6 +9,15 @@ public class Node {
    private HashMap<Node, Double> distances = new HashMap<>();
    private boolean visited;
 
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   private String name;
    public Node()
    {
       this.lon =0;

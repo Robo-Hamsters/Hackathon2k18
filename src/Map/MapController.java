@@ -60,8 +60,9 @@ public class MapController {
                 }
             }
         }
-        //Routing routing = new Routing(nodeImport.getNodes());
+        Routing routing = new Routing(nodeImport.getNodes());
         //routing.antCollony(routing.getNodes().get(0));
+        routing.findTheRightPath();
     }
 
     public void clearMap(ActionEvent event)
