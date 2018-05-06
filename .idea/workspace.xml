@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Calculate total distances">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/Map/Map.fxml" afterPath="$PROJECT_DIR$/src/Map/Map.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/Map/MapController.java" afterPath="$PROJECT_DIR$/src/Map/MapController.java" />
       <change beforePath="$PROJECT_DIR$/src/Map/Routing.java" afterPath="$PROJECT_DIR$/src/Map/Routing.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -66,11 +68,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Routing.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Map.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Map/Map.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Routing.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Map/Routing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+            <state relative-caret-position="397">
+              <caret line="122" column="43" lean-forward="true" selection-start-line="122" selection-start-column="43" selection-end-line="122" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#237#252#0" expanded="true" />
@@ -81,21 +96,21 @@
                 <element signature="e#633#634#0" expanded="true" />
                 <element signature="e#673#674#0" expanded="true" />
                 <element signature="e#707#708#0" expanded="true" />
-                <element signature="e#6435#6436#0" expanded="true" />
-                <element signature="e#6486#6487#0" expanded="true" />
+                <element signature="e#6758#6759#0" expanded="true" />
+                <element signature="e#6809#6810#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MapController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Map/MapController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="69" column="52" lean-forward="false" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
+            <state relative-caret-position="289">
+              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
               <folding>
-                <element signature="e#3063#3064#0" expanded="true" />
-                <element signature="e#3144#3145#0" expanded="true" />
+                <element signature="e#3308#3309#0" expanded="true" />
+                <element signature="e#3389#3390#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,11 +150,11 @@
         <option value="$PROJECT_DIR$/src/Map/NodeDistance.java" />
         <option value="$PROJECT_DIR$/sample.txt" />
         <option value="$PROJECT_DIR$/testing.html" />
-        <option value="$PROJECT_DIR$/src/Map/MapController.java" />
         <option value="$PROJECT_DIR$/src/Map/Node.java" />
         <option value="$PROJECT_DIR$/src/Map/FileGeolocImport.java" />
-        <option value="$PROJECT_DIR$/src/Map/Map.fxml" />
         <option value="$PROJECT_DIR$/src/Map/Routing.java" />
+        <option value="$PROJECT_DIR$/src/Map/Map.fxml" />
+        <option value="$PROJECT_DIR$/src/Map/MapController.java" />
       </list>
     </option>
   </component>
@@ -637,11 +652,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525586187124</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Assesing questions">
+      <created>1525589382916</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1525589382916</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54507000" />
+    <option name="totallyTimeSpent" value="56418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -722,7 +744,8 @@
     <MESSAGE value="Bug fixed" />
     <MESSAGE value="Routing Algorithm" />
     <MESSAGE value="Calculate total distances" />
-    <option name="LAST_COMMIT_MESSAGE" value="Calculate total distances" />
+    <MESSAGE value="Assesing questions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Assesing questions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -760,8 +783,8 @@
         <state relative-caret-position="374">
           <caret line="31" column="60" lean-forward="true" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
           <folding>
-            <element signature="e#3063#3064#0" expanded="true" />
-            <element signature="e#3144#3145#0" expanded="true" />
+            <element signature="e#3308#3309#0" expanded="true" />
+            <element signature="e#3389#3390#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -865,17 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Map/Map.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="99" lean-forward="false" selection-start-line="11" selection-start-column="99" selection-end-line="11" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testing.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -944,21 +956,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Map/MapController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="69" column="52" lean-forward="false" selection-start-line="69" selection-start-column="52" selection-end-line="69" selection-end-column="52" />
-          <folding>
-            <element signature="e#3063#3064#0" expanded="true" />
-            <element signature="e#3144#3145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Map/Routing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        <state relative-caret-position="397">
+          <caret line="122" column="43" lean-forward="true" selection-start-line="122" selection-start-column="43" selection-end-line="122" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#237#252#0" expanded="true" />
@@ -969,8 +970,30 @@
             <element signature="e#633#634#0" expanded="true" />
             <element signature="e#673#674#0" expanded="true" />
             <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#6435#6436#0" expanded="true" />
-            <element signature="e#6486#6487#0" expanded="true" />
+            <element signature="e#6758#6759#0" expanded="true" />
+            <element signature="e#6809#6810#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Map/Map.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Map/MapController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+          <folding>
+            <element signature="e#3308#3309#0" expanded="true" />
+            <element signature="e#3389#3390#0" expanded="true" />
           </folding>
         </state>
       </provider>
