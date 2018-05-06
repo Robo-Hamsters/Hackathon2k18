@@ -62,7 +62,7 @@ public class MapController {
 
         for(int i=0; i<route.size()-1; i++)
         {
-            PauseTransition delay = new PauseTransition(Duration.seconds(i+1));
+            PauseTransition delay = new PauseTransition(Duration.millis(i*100));
             delay.playFromStart();
 
             clr -= 30;
