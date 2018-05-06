@@ -12,5 +12,6 @@
       <Button fx:id="openFileBtn" layoutX="14.0" layoutY="55.0" mnemonicParsing="false" onAction="#openFile" prefHeight="25.0" prefWidth="129.0" text="Open File" />
       <Button fx:id="clearMapBtn" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#clearMap" prefHeight="25.0" prefWidth="129.0" text="Clear Map" AnchorPane.leftAnchor="14.0" />
       <Label fx:id="filePath" layoutX="14.0" layoutY="96.0" />
+      <Button fx:id="runAlgorithm1" layoutX="14.0" layoutY="187.0" mnemonicParsing="false" onAction="#runAlgorithm1" prefHeight="25.0" prefWidth="129.0" text="Run Algorithm" />
    </children>
 </AnchorPane>

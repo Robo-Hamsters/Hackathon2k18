@@ -81,7 +81,6 @@ public class FileGeolocImport {
                     distanceAPI.setOrigins(toAdd);
                     distanceAPI.setDestinations(otherNode);
                     distanceAPI.retriveDistance();
-                    //distanceAPI.retriveDistanceFILE("./Filedata.txt");
                     nodes.get(nodes.indexOf(toAdd)).getDistances().put(distanceAPI.getDistance(), otherNode);
                 }
             }

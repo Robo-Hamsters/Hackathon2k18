@@ -15,15 +15,18 @@
         var options = { zoom:13, mapTypeId:google.maps.MapTypeId.ROADMAP, center:new google.maps.LatLng(41.0569097,23.4975426)};
         map = new google.maps.Map(document.getElementById('map_canvas'), options);
     }
-    function clearMap()
+    function clearPolys()
     {
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(null);
-        }
         for (var i = 0; i < points.length; i++) {
             points[i].setMap(null);
         }
         points = [];
+    }
+    function clearMarkers()
+    {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
         markers = [];
     }
     function createMarker(lat,lng)
@@ -32,12 +35,12 @@
         marker = new google.maps.Marker({position:new google.maps.LatLng(lat, lng), map:map, title:""});
         markers.push(marker);
     }
-    function createPolyline(latFr,lonFr,latTo,lonTo)
+    function createPolyline(latFr,lonFr,latTo,lonTo,clr)
     {
         var flightPath = new google.maps.Polyline({
             path: [ {lat: latFr, lng: lonFr},{lat: latTo, lng: lonTo}],
             geodesic: true,
-            strokeColor: '#FF0000',
+            strokeColor: clr,
             strokeOpacity: 1.0,
             strokeWeight: 2,
             map:map,

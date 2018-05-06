@@ -1,5 +1,9 @@
 package Map;
 
+import javafx.animation.Animation;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,10 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 import java.util.Map;
 
 
@@ -31,6 +37,10 @@ public class MapController {
 
     private String distancesFile = "";
 
+    private Routing routing = new Routing();
+
+    private FileGeolocImport nodeImport = null;
+
     public void loadMapView(){
         WebEngine webEngine = webView.getEngine();
         String location = null;
@@ -40,14 +50,36 @@ public class MapController {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
 
+    public void runAlgorithm1(ActionEvent event)
+    {
+        int clr = 0x0000ff;
+        routing.setNodes(nodeImport.getNodes());
+        routing.findTheRightPath();
+        List<Node> route = routing.getRoute();
+        webView.getEngine().executeScript("clearPolys();");
+
+        for(int i=0; i<route.size()-1; i++)
+        {
+            PauseTransition delay = new PauseTransition(Duration.seconds(i+1));
+            delay.playFromStart();
+
+            clr -= 30;
+            String colour = Integer.toHexString(Math.abs(clr));
+            String argument = "createPolyline(" + route.get(i).getLat() + "," + route.get(i).getLon() + "," + route.get(i + 1).getLat() + "," + route.get(i + 1).getLon() + ",\"" + colour + "\");";
+
+
+            delay.setOnFinished(event1 -> webView.getEngine().executeScript(argument));
+            delay.play();
+        }
     }
 
     public void loadMarkers(ActionEvent event) throws IOException {
 
         if(!distancesFile.equals(""))
         {
-            FileGeolocImport nodeImport = new FileGeolocImport(nodeFile, distancesFile);
+            nodeImport = new FileGeolocImport(nodeFile, distancesFile);
             for(Node node : nodeImport.getNodes())
             {
                 webView.getEngine().executeScript("createMarker("+node.getLat()+","+node.getLon()+");");
@@ -56,20 +88,15 @@ public class MapController {
             {
                 for(Map.Entry<Node, Double> distances : node.getDistances().entrySet())
                 {
-                    webView.getEngine().executeScript("createPolyline("+node.getLat()+","+node.getLon()+","+distances.getKey().getLat()+","+distances.getKey().getLon()+");");
+                    webView.getEngine().executeScript("createPolyline("+node.getLat()+","+node.getLon()+","+distances.getKey().getLat()+","+distances.getKey().getLon()+", \"FF0000\");");
                 }
             }
-            Routing routing = new Routing(nodeImport.getNodes());
-            routing.findTheRightPath();
-            //routing.antCollony(routing.getNodes().get(0));
-
         }
     }
 
     public void clearMap(ActionEvent event)
     {
-        webView.getEngine().executeScript("clearMap()");
-
+        webView.getEngine().executeScript("clearMarkers();clearPolys();");
     }
 
     public void openFile(ActionEvent event)
