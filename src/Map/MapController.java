@@ -1,9 +1,6 @@
 package Map;
 
-import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,6 +29,8 @@ public class MapController {
     private Button openFileBtn;
     @FXML
     private Label filePath;
+    @FXML
+    private Button secondaryAlgorithm;
 
     private String nodeFile = "./nodes.txt";
 
@@ -52,14 +51,11 @@ public class MapController {
         }
     }
 
-    public void runAlgorithm1(ActionEvent event)
+    public void walkMap(List<Node> route)
     {
-        int clr = 0x0000ff;
-        routing.setNodes(nodeImport.getNodes());
-        routing.findTheRightPath();
-        List<Node> route = routing.getRoute();
-        webView.getEngine().executeScript("clearPolys();");
 
+        int clr = 0x0000ff;
+        webView.getEngine().executeScript("clearPolys();");
         for(int i=0; i<route.size()-1; i++)
         {
             PauseTransition delay = new PauseTransition(Duration.millis(i*100));
@@ -69,10 +65,25 @@ public class MapController {
             String colour = Integer.toHexString(Math.abs(clr));
             String argument = "createPolyline(" + route.get(i).getLat() + "," + route.get(i).getLon() + "," + route.get(i + 1).getLat() + "," + route.get(i + 1).getLon() + ",\"" + colour + "\");";
 
-
             delay.setOnFinished(event1 -> webView.getEngine().executeScript(argument));
             delay.play();
         }
+    }
+
+    public void secondaryAlgorithm(ActionEvent event)
+    {
+        routing.setNodes(nodeImport.getNodes());
+        routing.findPathWithConditionalNodes();
+        List<Node> route = routing.getRoute();
+        walkMap(route);
+    }
+
+    public void runAlgorithm1(ActionEvent event)
+    {
+        routing.setNodes(nodeImport.getNodes());
+        routing.findTheRightPath();
+        List<Node> route = routing.getRoute();
+        walkMap(route);
     }
 
     public void loadMarkers(ActionEvent event) throws IOException {
