@@ -30,6 +30,13 @@ public class Routing {
         this.nodes = nodes;
     }
 
+    public void findPathWithConditionalNodes()
+    {
+        List<Node> reqPath = new ArrayList<>();
+
+        //routeForRequiredList(nodes.get(0), );
+    }
+
     public void findTheRightPath() {
         finalNode = null;
         routAlgorithmWeights(nodes.get(0));
@@ -145,6 +152,52 @@ public class Routing {
         }
     }
 
+    private void routeForRequiredList(Node startingNode, List<Node> requiredDestinations)
+    {
+        Node nextNode = null;
+        double min = 100000;
+        if(requiredDestinations == null)
+        {
+            System.out.println("Finnito");
+        }
+        else
+        {
+            if(requiredDestinations.size() <= 0)
+            {
+                for(Map.Entry<Node, Double> distance : startingNode.getDistances().entrySet())
+                {
+                    if(distance.getKey().equals(new Node(41.014645, 23.457354)))
+                    {
+                        nextNode = distance.getKey();
+                        visited.add(nextNode);
+                        routeForRequiredList(nextNode, null);
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                for(Map.Entry<Node, Double> distance : startingNode.getDistances().entrySet())
+                {
+                    if(requiredDestinations.contains(distance.getKey()))
+                    {
+                        requiredDestinations.remove(distance.getKey());
+                        nextNode = distance.getKey();
+                    }
+                    else if(distance.getValue() < min)
+                    {
+                        min = distance.getValue();
+                        nextNode = distance.getKey();
+                    }
+                }
+                visited.add(nextNode);
+                routeForRequiredList(nextNode, requiredDestinations);
+            }
+        }
+    }
 
     private boolean isFinished(Node atLast) {
         boolean check = true;
