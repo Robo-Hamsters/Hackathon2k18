@@ -42,6 +42,12 @@ public class Routing {
         routAlgorithmWeights(nodes.get(0));
         System.out.println(calculateTotalDistance(visited));
         System.out.println(visited.size());
+
+        route = new ArrayList<>();
+        for(Node node: visited)
+        {
+            route.add(node);
+        }/*
         for(int i =0 ; i<150;i++){
             routAlgorithmWeights(nodes.get(0));
             if(calculateTotalDistance(visited) < min)
@@ -57,6 +63,16 @@ public class Routing {
                 }
             }
             visited.clear();
+        }*/
+        /*List<Node> reqList = new ArrayList<>();
+        reqList.add(new Node(41.020032, 23.520701));
+        reqList.add(new Node(41.016434,23.434656));
+        reqList.add(new Node(40.988154,23.516756));
+        reqList.add(new Node(41.068238, 23.390686));
+        routeForRequiredList(nodes.get(0),reqList);*/
+
+        for(Node node : visited){
+            System.out.println(node.getName());
         }
     }
 
@@ -110,7 +126,7 @@ public class Routing {
     }
 
     public void routAlgorithmWeights(Node startingNode) {
-        Node nextNode = null ;
+        Node nextNode ;
        /* List<Node> list = new ArrayList<>();
         for (Map.Entry<Node, Double> entry : startingNode.getDistances().entrySet()) {
 
@@ -219,7 +235,8 @@ public class Routing {
 
 
     public int giveRandom(int size) {
-        return (int) (Math.random() * size);
+        int r = (int) (Math.random() * size);
+        return r;
     }
 
 
