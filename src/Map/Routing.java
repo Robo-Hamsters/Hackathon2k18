@@ -1,5 +1,7 @@
 package Map;
 
+import javafx.scene.control.Label;
+
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -39,7 +41,16 @@ public class Routing {
 
     public void findTheRightPath() {
         finalNode = null;
-        routAlgorithmWeights(nodes.get(0));
+        List<Node> reqList = new ArrayList<>();
+        reqList.add(new Node(41.020032, 23.520701));
+        reqList.add(new Node(41.016434,23.434656));
+        reqList.add(new Node(40.988154,23.516756));
+        reqList.add(new Node(41.068238, 23.390686));
+        routeForRequiredList(nodes.get(0),reqList);
+
+        //routAlgorithmWeights(nodes.get(0));
+        //MapController controller = new MapController();
+       // controller.getLabelKm().setText(""+sum);
         System.out.println(calculateTotalDistance(visited));
         System.out.println(visited.size());
 

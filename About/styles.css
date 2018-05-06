@@ -30,6 +30,16 @@ a {
   min-height: 48px;
 }
 
+video {
+  width: 100%;
+
+}
+
+.trailer {
+  text-align: center;
+  padding: 30px;
+}
+
 
 /*********** Media Screen ***********/
 

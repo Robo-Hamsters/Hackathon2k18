@@ -35,6 +35,12 @@ public class MapController {
     @FXML
     private Button secondaryAlgorithm;
 
+    @FXML
+    private Label labelKm;
+
+    public Label getLabelKm() { return labelKm;}
+
+    public void setLabelKm(Label labelKm) { this.labelKm = labelKm; }
     private String nodeFile = "./nodes.txt";
 
     private String distancesFile = "";
