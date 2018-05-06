@@ -3,8 +3,11 @@ package Map;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -17,9 +20,18 @@ public class MapController {
     private WebView webView;
     @FXML
     private Button btn_load;
+    @FXML
+    private Button clearMapBtn;
+    @FXML
+    private Button openFileBtn;
+    @FXML
+    private Label filePath;
 
+    private String nodeFile = "./nodes.txt";
 
-    public void draw(){
+    private String distancesFile = "";
+
+    public void loadMapView(){
         WebEngine webEngine = webView.getEngine();
         String location = null;
         try {
@@ -31,22 +43,39 @@ public class MapController {
 
     }
 
-    public void loadMapView(ActionEvent event) throws IOException {
+    public void loadMarkers(ActionEvent event) throws IOException {
 
-        FileGeolocImport nodeImport = new FileGeolocImport("./nodes.txt", "./sample.txt");
-        System.out.println();
-        for(Node node : nodeImport.getNodes())
+        if(!distancesFile.equals(""))
         {
-            webView.getEngine().executeScript("createMarker("+node.getLat()+","+node.getLon()+");");
-        }
-        for(Node node : nodeImport.getNodes())
-        {
-            for(Map.Entry<Node, Double> distances : node.getDistances().entrySet())
+            FileGeolocImport nodeImport = new FileGeolocImport(nodeFile, distancesFile);
+            for(Node node : nodeImport.getNodes())
             {
-                webView.getEngine().executeScript("createPolyline("+node.getLat()+","+node.getLon()+","+distances.getKey().getLat()+","+distances.getKey().getLon()+");");
+                webView.getEngine().executeScript("createMarker("+node.getLat()+","+node.getLon()+");");
+            }
+            for(Node node : nodeImport.getNodes())
+            {
+                for(Map.Entry<Node, Double> distances : node.getDistances().entrySet())
+                {
+                    webView.getEngine().executeScript("createPolyline("+node.getLat()+","+node.getLon()+","+distances.getKey().getLat()+","+distances.getKey().getLon()+");");
+                }
             }
         }
         //Routing routing = new Routing(nodeImport.getNodes());
         //routing.antCollony(routing.getNodes().get(0));
+    }
+
+    public void clearMap(ActionEvent event)
+    {
+        webView.getEngine().executeScript("clearMap()");
+    }
+
+    public void openFile(ActionEvent event)
+    {
+        FileChooser fc = new FileChooser();
+        File distancesFile = fc.showOpenDialog(null);
+        if(distancesFile.exists()) {
+            this.distancesFile = distancesFile.toString();
+            filePath.setText(distancesFile.toString());
+        }
     }
 }
